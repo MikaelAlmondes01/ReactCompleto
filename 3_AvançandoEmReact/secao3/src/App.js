@@ -1,5 +1,9 @@
 import "./App.css";
 import zed from "./assets/zedLol.png";
+import ManageData from "./components/ManageData";
+import ListRender from "./components/ListRender";
+import CondicionalRender from "./components/CondicionalRender";
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +14,11 @@ function App() {
       </div>
       <div>
         <img src={zed} alt="zedão" className="imagem" />
+      </div>
+      <div>
+        <ManageData />
+        <ListRender />
+        <CondicionalRender />
       </div>
     </div>
   );
