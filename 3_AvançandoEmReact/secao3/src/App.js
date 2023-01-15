@@ -11,9 +11,17 @@ import ExecuteFunction from "./components/ExecuteFunction";
 import { useState } from "react";
 import Message from "./components/Message";
 import ChangeMessageState from "./components/ChangeMessageState";
+import UserDetails from "./components/UserDetails";
+import Persons from "./components/Persons";
 
 function App() {
   const name = "Mikael";
+
+  const persons = [
+    { id: 1, nome: "Mikael Rodrigues", idade: 12, profissao: "Aprendiz" },
+    { id: 1, nome: "Théo Rodrigues", idade: 18, profissao: "Aprendiz" },
+    { id: 1, nome: "Aghata Rodrigues", idade: 32, profissao: "Aprendiz" },
+  ];
 
   const cars = [
     { id: 1, brand: "ferrari", color: "amarela", newCar: true, km: 0 },
@@ -22,6 +30,14 @@ function App() {
     { id: 4, brand: "ponifice", color: "branco", newCar: false, km: 500 },
   ];
 
+  const users = [
+    { id: 1, nome: "Mikael", trabalho: "Programador", idade: 24 },
+    { id: 2, nome: "Marcos", trabalho: "Empresário", idade: 21 },
+    { id: 3, nome: "Kairo", trabalho: "Enfermeiro", idade: 18 },
+    { id: 4, nome: "Mikaely", trabalho: "Advogada", idade: 32 },
+    { id: 5, nome: "Luiza", trabalho: "Artesâ", idade: 55 },
+    { id: 6, nome: "Junior", trabalho: "Aposentado", idade: 56 },
+  ];
   function showMenssage() {
     console.log("Evento do componente pai!");
   }
@@ -74,6 +90,22 @@ function App() {
       {/* state Lift */}
       <Message msg={message} />
       <ChangeMessageState handleMessage={handleMessage} />
+
+      {/* Desafio da seção */}
+      <h2>Desafio Começa agora</h2>
+      {users.map((user) => (
+        <UserDetails
+          key={user.id}
+          name={user.nome}
+          job={user.trabalho}
+          age={user.idade}
+        />
+      ))}
+
+      {/* Desafio Feito por mim */}
+      {persons.map((person) => (
+        <Persons name={person.nome} job={person.profissao} age={person.idade} />
+      ))}
     </div>
   );
 }
