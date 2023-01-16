@@ -1,6 +1,7 @@
 import "./App.css";
 import MyComponent from "./components/MyComponent";
 import { useState } from "react";
+import Title from "./components/Title";
 function App() {
   const n = 15;
   const [name] = useState("Mikael");
@@ -44,6 +45,9 @@ function App() {
       <h2 className={redTitle ? "red-title" : "title"}>
         Esse título vai ter uma classe dinâmica
       </h2>
+
+      {/* CSS modules */}
+      <Title />
     </div>
   );
 }
