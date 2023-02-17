@@ -13,6 +13,7 @@ function App() {
     <div className="App">
       <h1>Olá Mundo</h1>
       <BrowserRouter>
+        {/* Links com react router */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
