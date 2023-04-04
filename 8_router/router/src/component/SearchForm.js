@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // usado para redirecionar dentro do código
 import { useState } from "react";
 
 const SearchForm = () => {
@@ -7,8 +7,8 @@ const SearchForm = () => {
   const [query, setQuery] = useState();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/search?q=" + query);
+    e.preventDefault(); //Para não recarregar a página ao clicar no botão de submit
+    navigate("/search?q=" + query); // redireciona para a rota /search?q=valorDigitado
   };
 
   return (
