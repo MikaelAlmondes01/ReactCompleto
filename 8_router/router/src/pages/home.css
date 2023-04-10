@@ -5,7 +5,8 @@
 }
 
 .products li {
-    border: 1px solid #EFEFEF;
+    border: 1px solid black;
+    background-color: coral;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
