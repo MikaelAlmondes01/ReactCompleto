@@ -1,30 +1,43 @@
-import React, { useState } from "react";
+import { useReducer } from "react";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Increment":
+      return { ...state, count: state.count + 1 };
+    case "showText":
+      return { ...state, showText: !state.showText };
+    case "Reset":
+      return { count: 0, showText: true };
+    default:
+      return "Essa ação não existe";
+  }
+};
 
 const TesteReducer = () => {
-  const [cont, setCont] = useState(0);
-  const [showText, setShowText] = useState(true);
+  const [state, dispatch] = useReducer(reducer, {
+    count: 0,
+    showText: true,
+  });
+
+  const { count, showText } = state;
 
   const handleClick = () => {
-    setCont((cont) => cont + 1);
-    handleShowMessage(cont + 1);
-  };
-  console.log(cont);
-  console.log(showText);
-  const handleShowMessage = (cont) => {
-    if (cont > 0) {
-      setShowText(false);
-    } else {
-      setShowText(true);
-    }
-    console.log(cont + "da função");
+    dispatch({ type: "Increment" });
+    dispatch({ type: "showText" });
   };
 
+  const handleReset = () => {
+    dispatch({ type: "Reset" });
+  };
   return (
     <div>
-      <h1>Contador exemplo</h1>
-      <h3>{cont}</h3>
-      <button onClick={handleClick}>Clique</button>
-      {showText && <p>Bem vindo ao melhor ao somador por click</p>}
+      <h1>Front Aplicação</h1>
+      <h3>{count}</h3>
+      <button onClick={handleClick}>Clique aqui para incrementar</button>
+      <button onClick={() => dispatch({ type: "Reset" })}>
+        Clique para resetar
+      </button>
+      {showText && <p>Bem vindo ao teste em reducer</p>}
     </div>
   );
 };
